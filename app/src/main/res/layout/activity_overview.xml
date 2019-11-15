@@ -22,12 +22,12 @@
         android:gravity="bottom|center"
         android:paddingTop="32dp"
         android:paddingBottom="8dp"
-        android:text="Abendeintrag"
+        android:text="Verlauf"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonKnowledge" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonEntries" />
 
     <Button
         android:id="@+id/buttonBack"
@@ -44,7 +44,7 @@
         app:layout_constraintStart_toStartOf="@+id/buttonTipps" />
 
     <Button
-        android:id="@+id/buttonKnowledge"
+        android:id="@+id/buttonEntries"
         style="@android:style/Widget.Material.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
         android:gravity="bottom|center"
         android:paddingTop="32dp"
         android:paddingBottom="8dp"
-        android:text="Morgeneintrag"
+        android:text="Einträge"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -105,7 +105,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:text="Tagebuch"
+        android:text="Übersicht"
         android:textColor="#FFFFFF"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"

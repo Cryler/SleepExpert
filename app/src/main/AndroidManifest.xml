@@ -17,6 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".Diary" />
+        <activity android:name=".Overview" />
+        <activity android:name=".Infos" />
+        <activity android:name=".Alarm" />
     </application>
 
 </manifest>

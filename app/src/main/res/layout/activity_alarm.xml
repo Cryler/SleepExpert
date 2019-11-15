@@ -9,27 +9,6 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/buttonTipps"
-        style="@android:style/Widget.Material.Button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:background="#00B0FF"
-        android:drawableTop="@drawable/diagram"
-        android:drawablePadding="8dp"
-        android:gravity="bottom|center"
-        android:paddingTop="32dp"
-        android:paddingBottom="8dp"
-        android:text="Abendeintrag"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonKnowledge" />
-
-    <Button
         android:id="@+id/buttonBack"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -40,29 +19,7 @@
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/buttonTipps"
-        app:layout_constraintStart_toStartOf="@+id/buttonTipps" />
-
-    <Button
-        android:id="@+id/buttonKnowledge"
-        style="@android:style/Widget.Material.Button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:background="#00B0FF"
-        android:drawableTop="@drawable/agendas_white"
-        android:drawablePadding="8dp"
-        android:gravity="bottom|center"
-        android:paddingTop="32dp"
-        android:paddingBottom="8dp"
-        android:text="Morgeneintrag"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+        tools:layout_editor_absoluteX="32dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -105,7 +62,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:text="Tagebuch"
+        android:text="Wecker"
         android:textColor="#FFFFFF"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
