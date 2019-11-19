@@ -9,30 +9,11 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/buttonProgress"
-        style="@android:style/Widget.Material.Button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:background="#00B0FF"
-        android:drawableTop="@drawable/diagram"
-        android:drawablePadding="8dp"
-        android:gravity="bottom|center"
-        android:paddingTop="32dp"
-        android:paddingBottom="8dp"
-        android:text="Verlauf"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonEntries" />
-
-    <Button
         android:id="@+id/buttonBack"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
         android:background="#00B0FF"
         android:gravity="center"
@@ -40,29 +21,8 @@
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/buttonProgress"
-        app:layout_constraintStart_toStartOf="@+id/buttonProgress" />
-
-    <Button
-        android:id="@+id/buttonEntries"
-        style="@android:style/Widget.Material.Button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:background="#00B0FF"
-        android:drawableTop="@drawable/agendas_white"
-        android:drawablePadding="8dp"
-        android:gravity="bottom|center"
-        android:paddingTop="32dp"
-        android:paddingBottom="8dp"
-        android:text="Einträge"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -105,7 +65,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:text="Übersicht"
+        android:text="Wissen"
         android:textColor="#FFFFFF"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -14,5 +14,16 @@ class Overview : AppCompatActivity() {
         buttonBack.setOnClickListener{
             startActivity(Intent(this, MainActivity::class.java))
         }
+
+        val buttonEntries = findViewById<Button>(R.id.buttonEntries)
+        buttonEntries.setOnClickListener{
+            startActivity(Intent(this, Entries::class.java))
+        }
+
+        val buttonProgress = findViewById<Button>(R.id.buttonProgress)
+        buttonProgress.setOnClickListener{
+            startActivity(Intent(this, Graphs::class.java))
+        }
+
     }
 }

@@ -14,5 +14,16 @@ class Diary : AppCompatActivity() {
         buttonBack.setOnClickListener{
             startActivity(Intent(this, MainActivity::class.java))
         }
+
+        val buttonMorningEntry = findViewById<Button>(R.id.buttonMorningEntry)
+        buttonMorningEntry.setOnClickListener{
+            startActivity(Intent(this, MorningEntry::class.java))
+        }
+
+        val buttonEveningEntry = findViewById<Button>(R.id.buttonEveningEntry)
+        buttonEveningEntry.setOnClickListener{
+            startActivity(Intent(this, EveningEntry::class.java))
+        }
+
     }
 }

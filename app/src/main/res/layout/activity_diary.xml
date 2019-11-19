@@ -9,7 +9,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/buttonTipps"
+        android:id="@+id/buttonEveningEntry"
         style="@android:style/Widget.Material.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonKnowledge" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonMorningEntry" />
 
     <Button
         android:id="@+id/buttonBack"
@@ -40,11 +40,11 @@
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/buttonTipps"
-        app:layout_constraintStart_toStartOf="@+id/buttonTipps" />
+        app:layout_constraintEnd_toEndOf="@+id/buttonMorningEntry"
+        app:layout_constraintStart_toStartOf="@+id/buttonEveningEntry" />
 
     <Button
-        android:id="@+id/buttonKnowledge"
+        android:id="@+id/buttonMorningEntry"
         style="@android:style/Widget.Material.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

@@ -14,5 +14,16 @@ class Infos : AppCompatActivity() {
         buttonBack.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
+
+        val buttonKnowledge = findViewById<Button>(R.id.buttonKnowledge)
+        buttonKnowledge.setOnClickListener{
+            startActivity(Intent(this, Knowledge::class.java))
+        }
+
+        val buttonTips = findViewById<Button>(R.id.buttonTips)
+        buttonTips.setOnClickListener{
+            startActivity(Intent(this, Tips::class.java))
+        }
+
     }
 }

@@ -10,8 +10,9 @@
 
     <Button
         android:id="@+id/buttonBack"
-        android:layout_width="0dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginBottom="24dp"
         android:background="#00B0FF"
         android:gravity="center"
@@ -19,12 +20,13 @@
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="32dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/buttonsavealarm"
-        android:layout_width="0dp"
+        android:id="@+id/buttonSave"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
         android:background="#00B0FF"
         android:gravity="center"
@@ -32,7 +34,7 @@
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="256dp" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <View
         android:id="@+id/view2"

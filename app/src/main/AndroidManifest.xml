@@ -20,6 +20,12 @@
         <activity android:name=".Overview" />
         <activity android:name=".Infos" />
         <activity android:name=".Alarm" />
+        <activity android:name=".MorningEntry" />
+        <activity android:name=".EveningEntry" />
+        <activity android:name=".Knowledge" />
+        <activity android:name=".Tips" />
+        <activity android:name=".Entries" />
+        <activity android:name=".Graphs" />
     </application>
 
 </manifest>

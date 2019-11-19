@@ -9,7 +9,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/buttonTipps"
+        android:id="@+id/buttonTips"
         style="@android:style/Widget.Material.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -40,8 +40,8 @@
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/buttonTipps"
-        app:layout_constraintStart_toStartOf="@+id/buttonTipps" />
+        app:layout_constraintEnd_toEndOf="@+id/buttonTips"
+        app:layout_constraintStart_toStartOf="@+id/buttonTips" />
 
     <Button
         android:id="@+id/buttonKnowledge"
