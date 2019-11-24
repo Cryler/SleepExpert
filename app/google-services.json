@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "917419354301",
+    "firebase_url": "https://klapps-e499f.firebaseio.com",
+    "project_id": "klapps-e499f",
+    "storage_bucket": "klapps-e499f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:917419354301:android:0e1dea17fc437b1f29afd4",
+        "android_client_info": {
+          "package_name": "com.example.sleepexpert"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "917419354301-3cjuor9gbqu8d7318luk7r3fbl02qum2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sleepexpert",
+            "certificate_hash": "7d06b0201edd8d4c2fad9ef77748a32d051840fc"
+          }
+        },
+        {
+          "client_id": "917419354301-hm1s2nftqs552d5dk43em48rk60i6t0n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEsL09uGwQWMMmY1dPXhtyfXTMcTPzJAY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "917419354301-hm1s2nftqs552d5dk43em48rk60i6t0n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

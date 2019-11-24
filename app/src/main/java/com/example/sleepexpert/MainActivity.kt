@@ -4,13 +4,18 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
 class  MainActivity : AppCompatActivity() {
 
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        auth = FirebaseAuth.getInstance()
 
         val buttonDiary = findViewById<Button>(R.id.buttonDiary)
         buttonDiary.setOnClickListener{
@@ -29,5 +34,10 @@ class  MainActivity : AppCompatActivity() {
             startActivity(Intent(this, Alarm::class.java))
         }
 
+        val buttonLogout = findViewById<Button>(R.id.buttonLogout)
+        buttonLogout.setOnClickListener{
+            auth.signOut()
+            startActivity(Intent(this, Login::class.java))
+        }
     }
 }

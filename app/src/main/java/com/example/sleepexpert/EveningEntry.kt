@@ -10,7 +10,7 @@ class EveningEntry : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_evening_entry)
 
-        val buttonBack = findViewById<Button>(R.id.buttonBack)
+        val buttonBack = findViewById<Button>(R.id.buttonBackToDiary)
         buttonBack.setOnClickListener{
             startActivity(Intent(this, MainActivity::class.java))
         }
