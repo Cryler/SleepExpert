@@ -30,15 +30,15 @@ class Alarm : AppCompatActivity() {
         alarmTime = findViewById<TimePicker>(R.id.alarmTimePicker)
         alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
 
-        //testing Text-View
+       /* //testing Text-View
         val text: TextView = findViewById(R.id.tester) as TextView
-
+*/
 
         val buttonBack = findViewById<Button>(R.id.buttonBack)
         buttonBack.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
-
+/*
         //depreceated button
         val buttonSave = findViewById<Button>(R.id.buttonSaveAlarm)
         buttonSave.setOnClickListener {
@@ -46,7 +46,7 @@ class Alarm : AppCompatActivity() {
             alarmManager!!.cancel(pIntent)
             text.text = alarmTime.toString()
         }
-
+*/
 
     }
 

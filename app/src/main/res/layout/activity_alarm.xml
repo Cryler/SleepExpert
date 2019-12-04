@@ -22,18 +22,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/buttonSaveAlarm"
-        android:layout_width="150dp"
+    <ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:background="#00B0FF"
-        android:gravity="center"
-        android:text="Speichern"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:layout_marginTop="554dp"
+        android:layout_marginBottom="129dp"
+        android:onClick="onToggleClicked"
+        android:text="ToggleButton"
+        android:textOff="Wecker ist aus"
+        android:textOn="Wecker ist an"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/view2"
@@ -78,27 +81,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/buttonBack"
         app:layout_constraintTop_toBottomOf="@+id/divider2"
+        app:layout_constraintVertical_bias="0.311"
         tools:layout_editor_absoluteX="0dp" />
 
-    <TextView
-        android:id="@+id/tester"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="190dp"
-        tools:layout_editor_absoluteY="707dp"
-        tools:text="hello" />
-
-    <ToggleButton
-        android:id="@+id/toggleButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:onClick="onToggleClicked"
-        android:text="ToggleButton"
-        android:textOff="Wecker aus"
-        android:textOn="Wecker an"
-        app:layout_constraintEnd_toStartOf="@+id/buttonSaveAlarm"
-        tools:layout_editor_absoluteY="650dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
