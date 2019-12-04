@@ -28,9 +28,6 @@ import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 
 
-
-
-
 class Alarm : AppCompatActivity() {
     var alarmTime: TimePicker? = null
     var alarmManager: AlarmManager? = null
@@ -46,15 +43,14 @@ class Alarm : AppCompatActivity() {
         alarmTime = findViewById<TimePicker>(R.id.alarmTimePicker)
         alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
 
-       /* //testing Text-View
-        val text: TextView = findViewById(R.id.tester) as TextView
-*/
+        /* //testing Text-View
+         val text: TextView = findViewById(R.id.tester) as TextView
+ */
 
         val buttonBack = findViewById<Button>(R.id.buttonBack)
         buttonBack.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
-
 
 
 /*
@@ -101,22 +97,18 @@ class Alarm : AppCompatActivity() {
             alarmManager!!.set(AlarmManager.RTC_WAKEUP, pickerTime, pIntent)
             Toast.makeText(
                 this,
-                "systime:" + System.currentTimeMillis().toString() + "pickertime:" + pickerTime.toString() + "Wecker ist aktiviert",
+                "Wecker ist aktiviert",
                 Toast.LENGTH_SHORT
             ).show()
 
 
         } else {
-/*
-            if(Utility.ringtoneHelper != null) {
+
+            if (Utility.ringtoneHelper != null) {
                 Utility.ringtoneHelper!!.stopRingtone()
             }
-*/
-            if(Utility.ringtoneHelper != null) {
-                Utility.ringtoneHelper!!.stopRingtone()
-            }
-                alarmManager!!.cancel(pIntent)
-                Toast.makeText(this, "Alarm ist deaktiviert", Toast.LENGTH_SHORT).show()
+            alarmManager!!.cancel(pIntent)
+            Toast.makeText(this, "Alarm ist deaktiviert", Toast.LENGTH_SHORT).show()
 
         }
     }

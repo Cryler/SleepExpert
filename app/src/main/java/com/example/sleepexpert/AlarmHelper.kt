@@ -13,6 +13,7 @@ import androidx.core.os.HandlerCompat.postDelayed
 internal interface RingtoneHelper {
     fun stopRingtone()
 }
+
 internal object Utility {
 
     var ringtoneHelper: RingtoneHelper? = null
@@ -22,8 +23,6 @@ internal object Utility {
 
 
 class AlarmHelper : BroadcastReceiver() {
-
-
 
 
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -42,7 +41,8 @@ class AlarmHelper : BroadcastReceiver() {
                 }
             }
         }
-    }}
+    }
+}
 //stop alarm after 10 seconds
 
 /*
