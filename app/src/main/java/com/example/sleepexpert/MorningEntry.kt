@@ -52,11 +52,11 @@ class MorningEntry : AppCompatActivity() {
         val labelDate = findViewById<TextView>(R.id.labelDate)
         labelDate.setText(formattedDate)
 
-        val seekbarSleepQuality = findViewById<SeekBar>(R.id.seekbarSleepQuality)
+        val seekbarSleepQuality = findViewById<SeekBar>(R.id.seekbarSleepQualityMorning)
         seekbarSleepQuality?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 val i = progress + 1
-                labelSleepQuality.text = i.toString()
+                labelSleepQualityMorning.text = i.toString()
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
@@ -69,9 +69,9 @@ class MorningEntry : AppCompatActivity() {
         })
 
 
-        val timePickerBedTime = findViewById<TimePicker>(R.id.timePickerBedTime)
+        val timePickerBedTime = findViewById<TimePicker>(R.id.timePickerBedTimeMorning)
         timePickerBedTime.setIs24HourView(true)
-        val timePickerSleepTime = findViewById<TimePicker>(R.id.timePickerSleepTime)
+        val timePickerSleepTime = findViewById<TimePicker>(R.id.timePickerSleepTimeMorning)
         timePickerSleepTime.setIs24HourView(true)
 
 
@@ -98,12 +98,12 @@ class MorningEntry : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
     fun saveData() {
         val date = findViewById<TextView>(R.id.labelDate).text
-        val seekbarSleepQuality = findViewById<SeekBar>(R.id.seekbarSleepQuality)
-        val timepickerBedTime = findViewById<TimePicker>(R.id.timePickerBedTime)
-        val bedTime = timepickerBedTime.hour.toString() + ":" + timePickerBedTime.minute.toString()
-        val textareaDoingInBed = findViewById<EditText>(R.id.textareaDoingInBed).text
-        val timepickerSleepTime = findViewById<TimePicker>(R.id.timePickerSleepTime)
-        val sleepTime = timepickerSleepTime.hour.toString() + ":" + timePickerSleepTime.minute.toString()
+        val seekbarSleepQuality = findViewById<SeekBar>(R.id.seekbarSleepQualityMorning)
+        val timepickerBedTime = findViewById<TimePicker>(R.id.timePickerBedTimeMorning)
+        val bedTime = timepickerBedTime.hour.toString() + ":" + timePickerBedTimeMorning.minute.toString()
+        val textareaDoingInBed = findViewById<EditText>(R.id.textareaDoingInBedMorning).text
+        val timepickerSleepTime = findViewById<TimePicker>(R.id.timePickerSleepTimeMorning)
+        val sleepTime = timepickerSleepTime.hour.toString() + ":" + timePickerSleepTimeMorning.minute.toString()
         var value = seekbarSleepQuality.progress
         value++
 
