@@ -43,9 +43,12 @@ class AlarmHelper : BroadcastReceiver() {
         }
     }
 }
-//stop alarm after 10 seconds
+
 
 /*
+       //stop alarm after 10 seconds
+
+
         val handler = Handler()
         handler.postDelayed(Runnable { ringtone.stop() }, 1000 * 10)
         }
