@@ -2,8 +2,12 @@ package com.example.sleepexpert
 
 import android.app.AlarmManager
 import android.app.PendingIntent
+import android.app.PendingIntent.getActivity
+import android.content.Context
 
 import android.content.Intent
+import android.media.Ringtone
+import android.media.RingtoneManager
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -14,6 +18,18 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_alarm.*
 
 import java.util.*
+import android.media.AudioManager
+import android.content.Context.AUDIO_SERVICE
+import androidx.core.content.ContextCompat.getSystemService
+
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
+
+
 
 class Alarm : AppCompatActivity() {
     var alarmTime: TimePicker? = null
@@ -30,15 +46,18 @@ class Alarm : AppCompatActivity() {
         alarmTime = findViewById<TimePicker>(R.id.alarmTimePicker)
         alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
 
-        //testing Text-View
+       /* //testing Text-View
         val text: TextView = findViewById(R.id.tester) as TextView
-
+*/
 
         val buttonBack = findViewById<Button>(R.id.buttonBack)
         buttonBack.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
 
+
+
+/*
         //depreceated button
         val buttonSave = findViewById<Button>(R.id.buttonSaveAlarm)
         buttonSave.setOnClickListener {
@@ -46,7 +65,7 @@ class Alarm : AppCompatActivity() {
             alarmManager!!.cancel(pIntent)
             text.text = alarmTime.toString()
         }
-
+*/
 
     }
 
@@ -86,10 +105,18 @@ class Alarm : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
 
-        } else {
 
-            alarmManager!!.cancel(pIntent)
-            Toast.makeText(this, "Alarm ist deaktiviert", Toast.LENGTH_SHORT).show()
+        } else {
+/*
+            if(Utility.ringtoneHelper != null) {
+                Utility.ringtoneHelper!!.stopRingtone()
+            }
+*/
+            if(Utility.ringtoneHelper != null) {
+                Utility.ringtoneHelper!!.stopRingtone()
+            }
+                alarmManager!!.cancel(pIntent)
+                Toast.makeText(this, "Alarm ist deaktiviert", Toast.LENGTH_SHORT).show()
 
         }
     }
