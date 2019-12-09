@@ -1,2 +1,2 @@
-include ':app', ':GraphView'
+include ':app'
 rootProject.name='SleepExpert'
