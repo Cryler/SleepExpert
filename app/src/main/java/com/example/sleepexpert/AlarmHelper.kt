@@ -26,7 +26,7 @@ class AlarmHelper : BroadcastReceiver() {
 
 
     override fun onReceive(context: Context?, intent: Intent?) {
-        Toast.makeText(context, "Hey Fucker get up!", Toast.LENGTH_LONG).show()
+        Toast.makeText(context, "Wake up! Wake up!", Toast.LENGTH_LONG).show()
         var alarmUri: Uri? = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
         if (alarmUri == null) {
             alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
