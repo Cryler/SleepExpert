@@ -1,5 +1,6 @@
 package com.example.sleepexpert
 
+import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -17,11 +18,17 @@ import kotlin.collections.HashMap
 
 class MorningEntry : AppCompatActivity() {
     companion object {
-        const val DATE_KEY = "date"
-        const val SLEEPQUALITY_KEY = "sleep quality"
-        const val GOINGTOBED_KEY = "Went to bed"
-        const val DOINGINBED_KEY = "Doing before sleep"
-        const val HOWLONGSLEEP_KEY = "Sleep time"
+        private const val DATE_KEY = "date"
+        private const val SLEEPQUALITY_KEY = "sleep quality"
+        private const val RESTED_KEY = "feeling rested"
+        private const val TIREDNESS_KEY = "tiredness when going to bed"
+        private const val BEDTIME_KEY = "bedtime"
+        private const val DOINGINBED_KEY = "doing before sleep"
+        private const val LIGHTSOUT_KEY = "lights out"
+        private const val FALLASLEEP_KEY = "estimated fall asleep time"
+        private const val WAKEUP_KEY = "woke up"
+        private const val GOTUP_KEY = "got up"
+        private const val HOWLONGSLEEP_KEY = "sleep time"
     }
 
     // Access a Cloud Firestore instance from your Activity
@@ -39,7 +46,7 @@ class MorningEntry : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
         user = FirebaseAuth.getInstance().uid.toString()
 
-
+        // go back to entry menu
         val buttonBack = findViewById<Button>(R.id.buttonBackToDiary)
         buttonBack.setOnClickListener {
             startActivity(Intent(this, Diary::class.java))
@@ -49,9 +56,10 @@ class MorningEntry : AppCompatActivity() {
         val formatter = SimpleDateFormat.getDateTimeInstance() //or use getDateInstance()
         val formattedDate = formatter.format(date)
 
-        val labelDate = findViewById<TextView>(R.id.labelDate)
+        val labelDate = findViewById<TextView>(R.id.labelDateMorning)
         labelDate.setText(formattedDate)
 
+        // shows the right value in the label of seekbar, when seekbar gets changed
         val seekbarSleepQuality = findViewById<SeekBar>(R.id.seekbarSleepQualityMorning)
         seekbarSleepQuality?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
@@ -67,19 +75,57 @@ class MorningEntry : AppCompatActivity() {
                 // Write code to perform some action when touch is stopped.
             }
         })
+        val seekbarRested = findViewById<SeekBar>(R.id.seekbarFeelingRestedMorning)
+        seekbarRested?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                val i = progress + 1
+                labelFeelingRestedMorning.text = i.toString()
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+                // Write code to perform some action when touch is started.
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+                // Write code to perform some action when touch is stopped.
+            }
+        })
+        val seekbarTiredness = findViewById<SeekBar>(R.id.seekbarTirednessGoingToBedMorning)
+        seekbarTiredness?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                val i = progress + 1
+                labelFeelingTirednessGoingToBedMorning.text = i.toString()
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+                // Write code to perform some action when touch is started.
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+                // Write code to perform some action when touch is stopped.
+            }
+        })
+
+        // sets onClickListeners on edittexts
+        val bedtimeLabel= findViewById<EditText>(R.id.editTextBedTime)
+        timePickerDialog(bedtimeLabel)
+        val lightsOutLabel= findViewById<EditText>(R.id.editTextLightsOut)
+        timePickerDialog(lightsOutLabel)
+        val fallAsleepLabel= findViewById<EditText>(R.id.editTextFallAsleep)
+        timePickerDialogSpinner(fallAsleepLabel)
+        val wakeUpLabel= findViewById<EditText>(R.id.editTextWakeUp)
+        timePickerDialog(wakeUpLabel)
+        val gotUpLabel= findViewById<EditText>(R.id.editTextGotUp)
+        timePickerDialog(gotUpLabel)
+        val sleepTimeLabel= findViewById<EditText>(R.id.editTextSleepTime)
+        timePickerDialogSpinner(sleepTimeLabel)
 
 
-        val timePickerBedTime = findViewById<TimePicker>(R.id.timePickerBedTimeMorning)
-        timePickerBedTime.setIs24HourView(true)
-        val timePickerSleepTime = findViewById<TimePicker>(R.id.timePickerSleepTimeMorning)
-        timePickerSleepTime.setIs24HourView(true)
-
-
+        // save entry
         val buttonSave = findViewById<Button>(R.id.buttonSaveMorningEntry)
-        buttonSave.setOnClickListener{
+        buttonSave.setOnClickListener {
             saveData()
         }
-
     }
 
     /*
@@ -95,33 +141,88 @@ class MorningEntry : AppCompatActivity() {
     }
 
 
+    // connects time picker dialogs to edittext fields and changes the value to the chosen time
+    private fun timePickerDialog(text: EditText) {
+        text.setOnClickListener{
+            val cal = Calendar.getInstance()
+            val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
+                cal.set(Calendar.HOUR_OF_DAY, hour)
+                cal.set(Calendar.MINUTE, minute)
+                text.setText(SimpleDateFormat("HH:mm").format(cal.time))
+            }
+            TimePickerDialog(this, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
+
+        }
+    }
+
+    // connects time picker dialogs in spinner mode to edittext fields and changes the value to the chosen time
+    private fun timePickerDialogSpinner(text: EditText) {
+        text.setOnClickListener{
+            val cal = Calendar.getInstance()
+            val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
+                cal.set(Calendar.HOUR_OF_DAY, hour)
+                cal.set(Calendar.MINUTE, minute)
+                text.setText(SimpleDateFormat("HH:mm").format(cal.time))
+            }
+            TimePickerDialog(this, R.style.CustomDatePickerDialog, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
+
+        }
+    }
+
     @RequiresApi(Build.VERSION_CODES.M)
-    fun saveData() {
-        val date = findViewById<TextView>(R.id.labelDate).text
+    private fun saveData() {
+        val date = findViewById<TextView>(R.id.labelDateMorning).text
         val seekbarSleepQuality = findViewById<SeekBar>(R.id.seekbarSleepQualityMorning)
-        val timepickerBedTime = findViewById<TimePicker>(R.id.timePickerBedTimeMorning)
-        val bedTime = timepickerBedTime.hour.toString() + ":" + timePickerBedTimeMorning.minute.toString()
+        var sleepQualValue = seekbarSleepQuality.progress
+        sleepQualValue++
+        val seekbarRested = findViewById<SeekBar>(R.id.seekbarFeelingRestedMorning)
+        var restedValue = seekbarRested.progress
+        restedValue++
+        val seekbarTiredness = findViewById<SeekBar>(R.id.seekbarTirednessGoingToBedMorning)
+        var tirednessValue = seekbarTiredness.progress
+        tirednessValue++
+        val bedTime = findViewById<EditText>(R.id.editTextBedTime).text.toString()
         val textareaDoingInBed = findViewById<EditText>(R.id.textareaDoingInBedMorning).text
-        val timepickerSleepTime = findViewById<TimePicker>(R.id.timePickerSleepTimeMorning)
-        val sleepTime = timepickerSleepTime.hour.toString() + ":" + timePickerSleepTimeMorning.minute.toString()
-        var value = seekbarSleepQuality.progress
-        value++
+        val lightsOut = findViewById<EditText>(R.id.editTextLightsOut).text.toString()
+        val fallAsleep = findViewById<EditText>(R.id.editTextFallAsleep).text.toString()
+        val wakeUp = findViewById<EditText>(R.id.editTextWakeUp).text.toString()
+        val gotUp = findViewById<EditText>(R.id.editTextGotUp).text.toString()
+        val sleepTime = findViewById<EditText>(R.id.editTextSleepTime).text.toString()
 
-        if (bedTime.isEmpty()) {
-            Toast.makeText(this, "Bitte ausfüllen wann Sie zu Bett gegangen sind", Toast.LENGTH_SHORT).show()
+        // Validators
+        var message = ""
+        when {
+            bedTime.isEmpty() -> message = "Bitte ausfüllen wann Sie zu Bett gegangen sind."
+            textareaDoingInBed.isEmpty() -> message ="Bitte ausfüllen was Sie noch im Bett gemacht haben."
+            lightsOut.isEmpty() -> message = "Bitte ausfüllen wann Sie das Licht gelöscht haben."
+            fallAsleep.isEmpty() -> message = "Bitte die geschätzte Einschlafdauer ausfüllen."
+            wakeUp.isEmpty() -> message = "Bitte ausfüllen wann Sie morgens aufgewacht sind."
+            gotUp.isEmpty() -> message = "Bitte ausfüllen wann Sie morgens aufgestanden sind."
+            sleepTime.isEmpty() -> message = "Bitte ausfüllen wie lange Sie geschlafen haben."
+        }
+        if (message.isNotEmpty()) {
+            Toast.makeText(
+                this,
+                message,
+                Toast.LENGTH_SHORT
+            ).show()
             return
         }
-        if (sleepTime.isEmpty()) {
-            Toast.makeText(this, "Bitte Schlafenszeit ausfüllen", Toast.LENGTH_SHORT).show()
-            return
-        }
 
-        val dataToSave: HashMap<String, String> = HashMap<String, String>()
-        dataToSave.put(SLEEPQUALITY_KEY, value.toString())
+
+        // save data to firebase db
+        val dataToSave: HashMap<String, String> = HashMap()
         dataToSave.put(DATE_KEY, date.toString())
-        dataToSave.put(GOINGTOBED_KEY, bedTime)
-        dataToSave.put(HOWLONGSLEEP_KEY, sleepTime)
+        dataToSave.put(SLEEPQUALITY_KEY, sleepQualValue.toString())
+        dataToSave.put(RESTED_KEY, restedValue.toString())
+        dataToSave.put(TIREDNESS_KEY, tirednessValue.toString())
+        dataToSave.put(BEDTIME_KEY, bedTime)
         dataToSave.put(DOINGINBED_KEY, textareaDoingInBed.toString())
+        dataToSave.put(LIGHTSOUT_KEY, lightsOut)
+        dataToSave.put(FALLASLEEP_KEY, fallAsleep)
+        dataToSave.put(WAKEUP_KEY, wakeUp)
+        dataToSave.put(GOTUP_KEY, gotUp)
+        dataToSave.put(HOWLONGSLEEP_KEY, sleepTime)
         val userCollRef = db.document("users/$user/MorningEntries/$date")
         userCollRef.set(dataToSave)
             .addOnCompleteListener(this) { task ->
@@ -143,6 +244,4 @@ class MorningEntry : AppCompatActivity() {
                 }
             }
     }
-
-
 }

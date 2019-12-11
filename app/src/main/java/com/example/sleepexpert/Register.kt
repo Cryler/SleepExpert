@@ -74,16 +74,19 @@ companion object{
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(REGISTER_TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
+                    Toast.makeText(
+                        baseContext, "Registrierung erfolgreich",
+                        Toast.LENGTH_SHORT
+                    ).show()
 
                     saveUserToDatabase()
 
                     startActivity(Intent(this, Login::class.java))
-
                 } else {
-                    // If sign in fails, display a message to the user.
+                    // If register fails, display a message to the user.
                     Log.w(REGISTER_TAG, "createUserWithEmail:failure", task.exception)
                     Toast.makeText(
-                        baseContext, "Authentication failed.",
+                        baseContext, "Registrierung fehlgeschlagen.",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -92,8 +95,9 @@ companion object{
 
     private fun saveUserToDatabase() {
         val uid = auth.uid ?: ""
+        val level = 0
 
-        val user = hashMapOf("uid" to uid, "username" to labelUsernameRegister.text.toString())
+        val user = hashMapOf("uid" to uid, "username" to labelUsernameRegister.text.toString(), "level" to level)
         db.document("users/$uid")
             .set(user)
             .addOnSuccessListener {
