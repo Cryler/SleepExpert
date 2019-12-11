@@ -22,16 +22,25 @@ internal object Utility {
 }
 
 
+
+
+
 class AlarmHelper : BroadcastReceiver() {
 
 
     override fun onReceive(context: Context?, intent: Intent?) {
         Toast.makeText(context, "Wake up! Wake up!", Toast.LENGTH_LONG).show()
+//use ringtone
+        val defaultRingtoneUri = RingtoneManager.getActualDefaultRingtoneUri(context, RingtoneManager.TYPE_RINGTONE)
+//use default tone (beep beep)
         var alarmUri: Uri? = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
         if (alarmUri == null) {
             alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         }
-        val ringtone = RingtoneManager.getRingtone(context, alarmUri)
+//use ringtone
+        val ringtone = RingtoneManager.getRingtone(context, defaultRingtoneUri)
+       //use default tone (beep beep)
+       // val ringtone = RingtoneManager.getRingtone(context, alarmUri)
         ringtone!!.play()
 
         Utility.ringtoneHelper = object : RingtoneHelper {
