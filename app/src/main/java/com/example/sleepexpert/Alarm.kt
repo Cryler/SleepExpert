@@ -26,10 +26,10 @@ class Alarm : AppCompatActivity() {
         setContentView(R.layout.activity_alarm)
 
 
-        //retrieve toggle state
+        //retrieve toggle state and text state, update toasts via shared preference
         val preferences = getPreferences(Context.MODE_PRIVATE)
-        val tgpref = preferences.getBoolean("tgpref", false)  //default is true
-        val timeText = preferences.getString("sharedtext", "")
+        val tgpref = preferences.getBoolean("tgpref", false)  //default is false
+        val timeText = preferences.getString("sharedtext", "")  //default is empty
         if (tgpref) {
 
             val mTextView = findViewById<TextView>(R.id.alarmTimeText)
@@ -63,7 +63,6 @@ class Alarm : AppCompatActivity() {
 
 
     private fun alarmStart(view: View) {
-
 
         val checked = toggleButton.isChecked
 
@@ -122,10 +121,10 @@ class Alarm : AppCompatActivity() {
             if (pIntent != null) {
                 alarmManager!!.cancel(pIntent)
             }
-            Toast.makeText(this, "Alarm ist deaktiviert", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Wecker deaktiviert", Toast.LENGTH_SHORT).show()
 
             val mTextView = findViewById<TextView>(R.id.alarmTimeText)
-            var timeText = "Alarm not set"
+            var timeText = "Wecker nicht gestellt"
             mTextView.text = timeText
 //shared preferences for toggle save
 
@@ -140,7 +139,7 @@ class Alarm : AppCompatActivity() {
 
     private fun updateTimeText(c: Calendar) {
         val mTextView = findViewById<TextView>(R.id.alarmTimeText)
-        var timeText = "Alarm set for: "
+        var timeText = "Wecker gestellt für: "
         timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime())
 
         mTextView.text = timeText
