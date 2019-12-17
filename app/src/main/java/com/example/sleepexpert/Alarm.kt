@@ -26,9 +26,6 @@ class Alarm : AppCompatActivity() {
         setContentView(R.layout.activity_alarm)
 
 
-
-
-
         //retrieve toggle state
         val preferences = getPreferences(Context.MODE_PRIVATE)
         val tgpref = preferences.getBoolean("tgpref", false)  //default is true
@@ -44,7 +41,7 @@ class Alarm : AppCompatActivity() {
 
         } else {
 
-            toggleButton.isChecked= false
+            toggleButton.isChecked = false
             Toast.makeText(this, "Noch kein Wecker gestellt", Toast.LENGTH_SHORT).show()
 
         }
@@ -58,7 +55,6 @@ class Alarm : AppCompatActivity() {
         buttonBack.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
-
 
 
         val toggleButton = findViewById<ToggleButton>(R.id.toggleButton)
@@ -80,12 +76,11 @@ class Alarm : AppCompatActivity() {
             editor.commit()
 
 
-
             val calendar = Calendar.getInstance()
             calendar.set(Calendar.HOUR_OF_DAY, alarmTime!!.currentHour)
             calendar.set(Calendar.MINUTE, alarmTime!!.currentMinute)
 
-         c = calendar
+            c = calendar
             //set TextView with current Alarmtime
             updateTimeText(calendar)
 
@@ -124,8 +119,9 @@ class Alarm : AppCompatActivity() {
                 Utility.ringtoneHelper!!.stopRingtone()
             }
 
-            if (pIntent != null){
-            alarmManager!!.cancel(pIntent)}
+            if (pIntent != null) {
+                alarmManager!!.cancel(pIntent)
+            }
             Toast.makeText(this, "Alarm ist deaktiviert", Toast.LENGTH_SHORT).show()
 
             val mTextView = findViewById<TextView>(R.id.alarmTimeText)
