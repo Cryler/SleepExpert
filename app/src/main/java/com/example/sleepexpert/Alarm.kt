@@ -19,7 +19,7 @@ class Alarm : AppCompatActivity() {
     var pIntent: PendingIntent? = null
 
 
-
+    var c = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,12 +39,12 @@ class Alarm : AppCompatActivity() {
 
             toggleButton.isChecked = true
 
-            Toast.makeText(this, "truetrue", Toast.LENGTH_SHORT).show()
-
+            Toast.makeText(this, "Wecker ist nach wie vor gestellt für " + DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime()), Toast.LENGTH_SHORT).show()
+           updateTimeText(c)
         } else {
 
             toggleButton.isChecked= false
-            Toast.makeText(this, "falsefalse", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Noch kein Wecker gestellt", Toast.LENGTH_SHORT).show()
 
         }
 
@@ -127,7 +127,9 @@ class Alarm : AppCompatActivity() {
             alarmManager!!.cancel(pIntent)}
             Toast.makeText(this, "Alarm ist deaktiviert", Toast.LENGTH_SHORT).show()
 
-
+            val mTextView = findViewById<TextView>(R.id.alarmTimeText)
+            var timeText = "Alarm not set"
+            mTextView.text = timeText
 //shared preferences for toggle save
 
             val pref = getPreferences(Context.MODE_PRIVATE)
