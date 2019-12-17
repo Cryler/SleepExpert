@@ -32,6 +32,9 @@
         <activity android:name=".Register" />
         <activity android:name=".MainActivity" />
         <receiver android:name=".AlarmHelper" />
+
+
+
     </application>
 
 </manifest>

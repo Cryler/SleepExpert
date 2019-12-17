@@ -2,30 +2,15 @@ package com.example.sleepexpert
 
 import android.app.AlarmManager
 import android.app.PendingIntent
-import android.app.PendingIntent.getActivity
 import android.content.Context
-
 import android.content.Intent
-import android.media.Ringtone
-import android.media.RingtoneManager
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.*
-
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_alarm.*
-
 import java.util.*
-import android.media.AudioManager
-import android.content.Context.AUDIO_SERVICE
-import androidx.core.content.ContextCompat.getSystemService
-
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import java.text.DateFormat
 
 
 class Alarm : AppCompatActivity() {
@@ -33,19 +18,40 @@ class Alarm : AppCompatActivity() {
     var alarmManager: AlarmManager? = null
     var pIntent: PendingIntent? = null
 
-    //get current time and format (unused)
-    val date = Calendar.getInstance().time
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_alarm)
+
+
+
+
+
+        //retrieve toggle state
+        val preferences = getPreferences(Context.MODE_PRIVATE)
+        val tgpref = preferences.getBoolean("tgpref", false)  //default is true
+
+        if (tgpref) {
+
+
+
+            toggleButton.isChecked = true
+
+            Toast.makeText(this, "truetrue", Toast.LENGTH_SHORT).show()
+
+        } else {
+
+            toggleButton.isChecked= false
+            Toast.makeText(this, "falsefalse", Toast.LENGTH_SHORT).show()
+
+        }
+
+
         alarmTime = findViewById<TimePicker>(R.id.alarmTimePicker)
         alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
 
-        /* //testing Text-View
-         val text: TextView = findViewById(R.id.tester) as TextView
- */
 
         val buttonBack = findViewById<Button>(R.id.buttonBack)
         buttonBack.setOnClickListener {
@@ -53,33 +59,35 @@ class Alarm : AppCompatActivity() {
         }
 
 
-/*
-        //depreceated button
-        val buttonSave = findViewById<Button>(R.id.buttonSaveAlarm)
-        buttonSave.setOnClickListener {
-            //testing Text-View
-            alarmManager!!.cancel(pIntent)
-            text.text = alarmTime.toString()
-        }
-*/
 
+        val toggleButton = findViewById<ToggleButton>(R.id.toggleButton)
+        toggleButton.setOnClickListener { v -> alarmStart(v) }
     }
 
-    @RequiresApi(Build.VERSION_CODES.KITKAT)
-    fun onToggleClicked(view: View) {
-        alarmStart(view)
-    }
 
     private fun alarmStart(view: View) {
-        if ((view as ToggleButton).isChecked) {
-            /*textchecker
-            val text: TextView = findViewById(R.id.tester) as TextView
-            text.text = alarmTime.toString()
 
-             */
+
+        val checked = toggleButton.isChecked
+
+        if (checked) {
+
+            //shared preferences to save toggle state
+            val pref = getPreferences(Context.MODE_PRIVATE)
+            val editor = pref.edit()
+            editor.putBoolean("tgpref", true) // value to store
+            editor.commit()
+
+
+
             val calendar = Calendar.getInstance()
             calendar.set(Calendar.HOUR_OF_DAY, alarmTime!!.currentHour)
             calendar.set(Calendar.MINUTE, alarmTime!!.currentMinute)
+
+
+            //set TextView with current Alarmtime
+            updateTimeText(calendar)
+
 
             val intent = Intent(this, AlarmHelper::class.java)
             pIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
@@ -87,30 +95,55 @@ class Alarm : AppCompatActivity() {
 
             var pickerTime = calendar.timeInMillis - calendar.timeInMillis % 60000
 
-            if (System.currentTimeMillis() > pickerTime) {
+            if (System.currentTimeMillis() > pickerTime!!) {
                 if (Calendar.AM_PM === 0)
                     pickerTime += 1000 * 60 * 60 * 12
                 else
                     pickerTime += pickerTime + 1000 * 60 * 60 * 24
             }
 
-            alarmManager!!.set(AlarmManager.RTC_WAKEUP, pickerTime, pIntent)
+
+
+            alarmManager!!.set(AlarmManager.RTC_WAKEUP, pickerTime!!, pIntent)
+
+
             Toast.makeText(
                 this,
                 "Wecker ist aktiviert",
                 Toast.LENGTH_SHORT
             ).show()
 
+            //update the textview to currently set time
+            updateTimeText(calendar)
+
 
         } else {
-
+            //stop ringtone
             if (Utility.ringtoneHelper != null) {
                 Utility.ringtoneHelper!!.stopRingtone()
             }
-            alarmManager!!.cancel(pIntent)
+
+            if (pIntent != null){
+            alarmManager!!.cancel(pIntent)}
             Toast.makeText(this, "Alarm ist deaktiviert", Toast.LENGTH_SHORT).show()
 
+
+//shared preferences for toggle save
+
+            val pref = getPreferences(Context.MODE_PRIVATE)
+            val editor = pref.edit()
+            editor.putBoolean("tgpref", false) // value to store
+            editor.apply()
         }
+
+    }
+
+    private fun updateTimeText(c: Calendar) {
+        val mTextView = findViewById<TextView>(R.id.alarmTimeText)
+        var timeText = "Alarm set for: "
+        timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime())
+
+        mTextView.text = timeText
     }
 
 
