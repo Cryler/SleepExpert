@@ -40,7 +40,7 @@ class Alarm : AppCompatActivity() {
 
             toggleButton.isChecked = true
 
-            Toast.makeText(this, "Wecker ist nach wie vor gestellt für " + timeText, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, timeText, Toast.LENGTH_SHORT).show()
 
         } else {
 

@@ -84,23 +84,22 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
-        <ToggleButton
-            android:id="@+id/toggleButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="481dp"
-            android:layout_marginBottom="202dp"
-            android:onClick="onToggleClicked"
-            android:text="ToggleButton"
-            android:textOff="Wecker ist aus"
-            android:textOn="Wecker ist an"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="OnClick" />
+    <ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="440dp"
+        android:layout_marginBottom="202dp"
+        android:onClick="onToggleClicked"
+        android:text="ToggleButton"
+        android:textOff="Wecker ist aus"
+        android:textOn="Wecker ist an"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="OnClick" />
 
 
 
