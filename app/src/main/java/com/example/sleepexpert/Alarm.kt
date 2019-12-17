@@ -32,15 +32,16 @@ class Alarm : AppCompatActivity() {
         //retrieve toggle state
         val preferences = getPreferences(Context.MODE_PRIVATE)
         val tgpref = preferences.getBoolean("tgpref", false)  //default is true
-
+        val timeText = preferences.getString("sharedtext", "")
         if (tgpref) {
 
-
+            val mTextView = findViewById<TextView>(R.id.alarmTimeText)
+            mTextView.text = timeText
 
             toggleButton.isChecked = true
 
-            Toast.makeText(this, "Wecker ist nach wie vor gestellt für " + DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime()), Toast.LENGTH_SHORT).show()
-           updateTimeText(c)
+            Toast.makeText(this, "Wecker ist nach wie vor gestellt für " + timeText, Toast.LENGTH_SHORT).show()
+
         } else {
 
             toggleButton.isChecked= false
@@ -84,7 +85,7 @@ class Alarm : AppCompatActivity() {
             calendar.set(Calendar.HOUR_OF_DAY, alarmTime!!.currentHour)
             calendar.set(Calendar.MINUTE, alarmTime!!.currentMinute)
 
-
+         c = calendar
             //set TextView with current Alarmtime
             updateTimeText(calendar)
 
@@ -134,7 +135,8 @@ class Alarm : AppCompatActivity() {
 
             val pref = getPreferences(Context.MODE_PRIVATE)
             val editor = pref.edit()
-            editor.putBoolean("tgpref", false) // value to store
+            editor.putBoolean("tgpref", false)
+            // value to store
             editor.apply()
         }
 
@@ -146,6 +148,12 @@ class Alarm : AppCompatActivity() {
         timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime())
 
         mTextView.text = timeText
+
+        val pref = getPreferences(Context.MODE_PRIVATE)
+        val editor = pref.edit()
+        editor.putString("sharedtext", timeText)
+        // value to store
+        editor.apply()
     }
 
 
