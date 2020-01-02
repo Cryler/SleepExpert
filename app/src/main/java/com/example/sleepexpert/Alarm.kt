@@ -1,8 +1,6 @@
 package com.example.sleepexpert
 
-import android.app.AlarmManager
-import android.app.Notification
-import android.app.PendingIntent
+import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -16,8 +14,8 @@ import android.os.SystemClock
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-
-
+import androidx.core.app.NotificationManagerCompat
+import androidx.media.app.NotificationCompat
 
 
 class Alarm : AppCompatActivity() {
@@ -31,6 +29,7 @@ class Alarm : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_alarm)
+
 
 
         //retrieve toggle state and text state, update toasts via shared preference
@@ -138,8 +137,8 @@ class Alarm : AppCompatActivity() {
             val mTextView = findViewById<TextView>(R.id.alarmTimeText)
             var timeText = "Wecker nicht gestellt"
             mTextView.text = timeText
-//shared preferences for toggle save
 
+//shared preferences for toggle save
             val pref = getPreferences(Context.MODE_PRIVATE)
             val editor = pref.edit()
             editor.putBoolean("tgpref", false)
@@ -164,29 +163,7 @@ class Alarm : AppCompatActivity() {
     }
 
 
-    private fun scheduleNotification(notification: Notification, delay: Int) {
 
-        val notificationIntent = Intent(this, NotificationPublisher::class.java)
-        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, 1)
-        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification)
-        val pendingIntent = PendingIntent.getBroadcast(
-            this,
-            0,
-            notificationIntent,
-            PendingIntent.FLAG_UPDATE_CURRENT
-        )
 
-        val futureInMillis = SystemClock.elapsedRealtime() + delay
-        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent)
-    }
-
-    private fun getNotification(content: String): Notification {
-        val builder = Notification.Builder(this)
-        builder.setContentTitle("Scheduled Notification")
-        builder.setContentText(content)
-        builder.setSmallIcon(R.mipmap.ic_launcher)
-        return builder.build()
-    }
 
 }
