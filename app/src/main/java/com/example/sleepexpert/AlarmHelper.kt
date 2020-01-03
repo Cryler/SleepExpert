@@ -84,7 +84,7 @@ class AlarmHelper : BroadcastReceiver() {
     }
 
 
-    fun issueNotification(context: Context) {
+    private fun issueNotification(context: Context) {
 
         // make the channel. The method has been discussed before.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -128,7 +128,7 @@ class AlarmHelper : BroadcastReceiver() {
     }
 
 
-    fun issueNotification2(context: Context) {
+    private fun issueNotification2(context: Context) {
 
         // make the channel. The method has been discussed before.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

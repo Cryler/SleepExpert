@@ -10,16 +10,19 @@
 
     <Button
         android:id="@+id/buttonBack"
-        android:layout_width="346dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="24dp"
+        android:layout_width="363dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="18dp"
         android:background="#00B0FF"
         android:gravity="center"
+
         android:text="Zurück"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <View
@@ -63,10 +66,10 @@
         android:id="@+id/alarmTimePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="81dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="89dp" />
+
 
     <TextView
         android:id="@+id/alarmTimeText"
@@ -75,33 +78,28 @@
         android:layout_above="@id/alarmTimePicker"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="128dp"
-        android:layout_marginTop="476dp"
         android:layout_marginEnd="107dp"
+        android:layout_marginBottom="124dp"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ToggleButton
         android:id="@+id/toggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="440dp"
-        android:layout_marginBottom="202dp"
+        android:layout_marginStart="139dp"
+        android:layout_marginBottom="222dp"
         android:onClick="onToggleClicked"
         android:text="ToggleButton"
         android:textOff="Wecker ist aus"
         android:textOn="Wecker ist an"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="OnClick" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
