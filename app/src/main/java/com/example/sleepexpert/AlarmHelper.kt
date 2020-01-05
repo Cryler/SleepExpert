@@ -18,8 +18,7 @@ import android.app.*
 import android.content.Context.NOTIFICATION_SERVICE
 import androidx.core.app.NotificationCompat
 import android.app.PendingIntent
-
-
+import android.media.AudioManager
 
 
 internal interface RingtoneHelper {
@@ -34,18 +33,15 @@ internal object Utility {
 }
 
 
-
-
-
 class AlarmHelper : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent?) {
 
 
-
         Toast.makeText(context, "Wake up! Wake up!", Toast.LENGTH_LONG).show()
 //use ringtone
-        val defaultRingtoneUri = RingtoneManager.getActualDefaultRingtoneUri(context, RingtoneManager.TYPE_RINGTONE)
+        val defaultRingtoneUri =
+            RingtoneManager.getActualDefaultRingtoneUri(context, RingtoneManager.TYPE_RINGTONE)
 //use default tone (beep beep)
         var alarmUri: Uri? = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
         if (alarmUri == null) {
@@ -53,8 +49,13 @@ class AlarmHelper : BroadcastReceiver() {
         }
 //use ringtone
         val ringtone = RingtoneManager.getRingtone(context, defaultRingtoneUri)
-       //use default tone (beep beep)
-       // val ringtone = RingtoneManager.getRingtone(context, alarmUri)
+        //use default tone (beep beep):
+        // val ringtone = RingtoneManager.getRingtone(context, alarmUri)
+
+        //Play ringtone even when phone is silent
+        ringtone.setStreamType(AudioManager.STREAM_ALARM)
+
+        //play ringtone, issue notification 1
         ringtone!!.play()
         issueNotification(context)
 
@@ -78,7 +79,8 @@ class AlarmHelper : BroadcastReceiver() {
         val channel = NotificationChannel(id, name, importance)
         channel.setShowBadge(true) // set false to disable badges, Oreo exclusive
         channel.setSound(null, null)
-        val notificationManager = context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager =
+            context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
         notificationManager.createNotificationChannel(channel)
     }
@@ -88,7 +90,12 @@ class AlarmHelper : BroadcastReceiver() {
 
         // make the channel. The method has been discussed before.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            makeNotificationChannel("CHANNEL_3", "Example channel", NotificationManager.IMPORTANCE_HIGH, context)
+            makeNotificationChannel(
+                "CHANNEL_3",
+                "Example channel",
+                NotificationManager.IMPORTANCE_HIGH,
+                context
+            )
 
         }
         // the check ensures that the channel will only be made
@@ -98,7 +105,8 @@ class AlarmHelper : BroadcastReceiver() {
 
         val intent = Intent(context, Alarm::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        val pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_ONE_SHOT)
+        val pendingIntent =
+            PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_ONE_SHOT)
         notification.setContentIntent(pendingIntent)
 
         notification
@@ -109,10 +117,10 @@ class AlarmHelper : BroadcastReceiver() {
             .setSound(null)
 
 
-        val notificationManager = context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager =
+            context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
-       notificationManager.notify(1, notification.build())
-
+        notificationManager.notify(1, notification.build())
 
 
     }
@@ -122,7 +130,8 @@ class AlarmHelper : BroadcastReceiver() {
         val channel = NotificationChannel(id, name, importance)
         channel.setShowBadge(true) // set false to disable badges, Oreo exclusive
 
-        val notificationManager = context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager =
+            context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
         notificationManager.createNotificationChannel(channel)
     }
@@ -132,7 +141,12 @@ class AlarmHelper : BroadcastReceiver() {
 
         // make the channel. The method has been discussed before.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            makeNotificationChannel2("CHANNEL_4", "Example channel4", NotificationManager.IMPORTANCE_HIGH, context)
+            makeNotificationChannel2(
+                "CHANNEL_4",
+                "Example channel4",
+                NotificationManager.IMPORTANCE_HIGH,
+                context
+            )
 
         }
 
@@ -140,7 +154,8 @@ class AlarmHelper : BroadcastReceiver() {
 
         val intent2 = Intent(context, Diary::class.java)
         intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        val pendingIntent2 = PendingIntent.getActivity(context, 0, intent2, PendingIntent.FLAG_ONE_SHOT)
+        val pendingIntent2 =
+            PendingIntent.getActivity(context, 0, intent2, PendingIntent.FLAG_ONE_SHOT)
 
         notification2.setContentIntent(pendingIntent2)
 
@@ -150,15 +165,13 @@ class AlarmHelper : BroadcastReceiver() {
             .setContentTitle("Eintrag schon erfasst?")
             .setContentText("Klicken Sie hier, falls nicht!")
             .setNumber(3)
-        val notificationManager = context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager =
+            context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
-      //  notificationManager.notify(1, notification.build())
+        //  notificationManager.notify(1, notification.build())
 
 
-
-
-            notificationManager.notify(2, notification2.build())
-
+        notificationManager.notify(2, notification2.build())
 
 
     }
