@@ -1,6 +1,7 @@
 package com.example.sleepexpert
 
 import android.app.*
+import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_alarm.*
 import java.util.*
 import java.text.DateFormat
+//import android.text.format.DateFormat
 import android.os.SystemClock
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
@@ -22,7 +24,7 @@ class Alarm : AppCompatActivity() {
     var alarmTime: TimePicker? = null
     var alarmManager: AlarmManager? = null
     var pIntent: PendingIntent? = null
-
+  //  val picker: TimePicker = findViewById<TimePicker>(R.id.alarmTimePicker)
 
     var c = Calendar.getInstance()
 
@@ -30,6 +32,9 @@ class Alarm : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_alarm)
 
+
+        //shows timepicker either in 24 or 12 hour mode depending on sytemsettings
+        alarmTimePicker.setIs24HourView(android.text.format.DateFormat.is24HourFormat(applicationContext))
 
 
         //retrieve toggle state and text state, update toasts via shared preference
