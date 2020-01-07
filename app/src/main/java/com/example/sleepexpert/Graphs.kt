@@ -1,12 +1,14 @@
 package com.example.sleepexpert
 
 import android.content.Intent
+import android.graphics.Color.WHITE
+import android.graphics.Color.rgb
 import android.os.Bundle
 import android.widget.Button
-import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.jjoe64.graphview.DefaultLabelFormatter
 import com.jjoe64.graphview.GraphView
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
@@ -31,10 +33,28 @@ class Graphs : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
         }
 
+//        Graph
         val graph = findViewById<GraphView>(R.id.graph)
         val viewport = graph.viewport
         viewport.isScalable = true
         viewport.isScrollable = true
+
+//        Graph X Label formatting
+        viewport.isXAxisBoundsManual = true
+        viewport.setMinX(0.0)
+        viewport.setMaxX(10.0)
+
+
+//        Graph Y Label formatting
+        graph.gridLabelRenderer.labelFormatter = object : DefaultLabelFormatter() {
+            override fun formatLabel(value: Double, isValueX: Boolean): String {
+                return if (isValueX) { // show normal x values
+                    super.formatLabel(value, isValueX)
+                } else { // show currency for y values
+                    super.formatLabel(value, isValueX) + " h"
+                }
+            }
+        }
 
 //        val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
 //
@@ -67,6 +87,9 @@ class Graphs : AppCompatActivity() {
                 }
 
                 val series = LineGraphSeries(allTimesVar)
+
+                series.isDrawBackground = true
+                series.thickness = 10
                 graph.addSeries(series)
             }
             .addOnFailureListener {

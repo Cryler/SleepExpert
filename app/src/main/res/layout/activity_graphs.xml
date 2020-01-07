@@ -46,6 +46,38 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="Verlauf"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="400dip"
+        android:background="#74EFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/divider7"
+        app:layout_constraintTop_toBottomOf="@id/divider2"
+        app:layout_constraintVertical_bias="0.07"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph"
+        android:layout_width="match_parent"
+        android:layout_height="400dip"
+        app:layout_constraintTop_toBottomOf="@+id/divider2"
+        tools:layout_editor_absoluteX="16dp" />
+
     <View
         android:id="@+id/divider2"
         android:layout_width="0dp"
@@ -68,57 +100,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:text="Verlauf"
-        android:textColor="#FFFFFF"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!--    <RadioGroup-->
+    <!--        android:id="@+id/radioGroup"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/divider7"-->
+    <!--        tools:layout_editor_absoluteX="-52dp">-->
 
+    <!--        <RadioButton-->
+    <!--            android:id="@+id/radioStunden"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:onClick="onRadioButtonClicked"-->
+    <!--            android:text="Stunden" />-->
 
-    <com.jjoe64.graphview.GraphView
-        android:id="@+id/graph"
-        android:layout_width="match_parent"
-        android:layout_height="400dip"
-        app:layout_constraintTop_toBottomOf="@+id/divider2"
-        tools:layout_editor_absoluteX="16dp" />
+    <!--        <RadioButton-->
+    <!--            android:id="@+id/radioEingeschlafen"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:onClick="onRadioButtonClicked"-->
+    <!--            android:text="Eingeschlafen" />-->
 
-<!--    <RadioGroup-->
-<!--        android:id="@+id/radioGroup"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/divider7"-->
-<!--        tools:layout_editor_absoluteX="-52dp">-->
+    <!--        <RadioButton-->
+    <!--            android:id="@+id/radioAufgewacht"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:onClick="onRadioButtonClicked"-->
+    <!--            android:text="Aufgewacht" />-->
 
-<!--        <RadioButton-->
-<!--            android:id="@+id/radioStunden"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:onClick="onRadioButtonClicked"-->
-<!--            android:text="Stunden" />-->
-
-<!--        <RadioButton-->
-<!--            android:id="@+id/radioEingeschlafen"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:onClick="onRadioButtonClicked"-->
-<!--            android:text="Eingeschlafen" />-->
-
-<!--        <RadioButton-->
-<!--            android:id="@+id/radioAufgewacht"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:onClick="onRadioButtonClicked"-->
-<!--            android:text="Aufgewacht" />-->
-
-<!--    </RadioGroup>-->
+    <!--    </RadioGroup>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
