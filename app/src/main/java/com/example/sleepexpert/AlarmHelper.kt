@@ -64,7 +64,7 @@ class AlarmHelper : BroadcastReceiver() {
         handler.postDelayed({
             // createNotification(SmsMessage.createFromPdu((byte[])smsExtra[0]), context);
             issueNotification2(context)
-        }, 7200000)
+        }, 3000000)
         Utility.ringtoneHelper = object : RingtoneHelper {
             override fun stopRingtone() {
                 if (ringtone.isPlaying) {
@@ -112,9 +112,11 @@ class AlarmHelper : BroadcastReceiver() {
         notification
             .setSmallIcon(R.mipmap.sym_def_app_icon) // can use any other icon
             .setContentTitle("Aufstehen bitte!")
-            .setContentText("Vergessen Sie nicht, ihr Tagebuch auszufüllen")
+            .setContentText("Vergessen Sie nicht, Ihr Tagebuch auszufüllen")
             .setNumber(3) // this shows a number in the notification dots
             .setSound(null)
+            .setAutoCancel(true)
+
 
 
         val notificationManager =
@@ -162,9 +164,11 @@ class AlarmHelper : BroadcastReceiver() {
 
         notification2
             .setSmallIcon(R.mipmap.sym_def_app_icon) // can use any other icon
-            .setContentTitle("Eintrag schon erfasst?")
+            .setContentTitle("Tagebucheintrag schon erfasst?")
             .setContentText("Klicken Sie hier, falls nicht!")
             .setNumber(3)
+            .setAutoCancel(true)
+
         val notificationManager =
             context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
