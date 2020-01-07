@@ -1,7 +1,7 @@
 package com.example.sleepexpert
 
-import android.app.AlarmManager
-import android.app.PendingIntent
+import android.app.*
+import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -11,19 +11,30 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_alarm.*
 import java.util.*
 import java.text.DateFormat
+//import android.text.format.DateFormat
+import android.os.SystemClock
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import androidx.core.app.NotificationManagerCompat
+import androidx.media.app.NotificationCompat
 
 
 class Alarm : AppCompatActivity() {
     var alarmTime: TimePicker? = null
     var alarmManager: AlarmManager? = null
     var pIntent: PendingIntent? = null
-
+  //  val picker: TimePicker = findViewById<TimePicker>(R.id.alarmTimePicker)
 
     var c = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_alarm)
+
+
+        //shows timepicker either in 24 or 12 hour mode depending on sytemsettings
+        alarmTimePicker.setIs24HourView(android.text.format.DateFormat.is24HourFormat(applicationContext))
 
 
         //retrieve toggle state and text state, update toasts via shared preference
@@ -101,6 +112,9 @@ class Alarm : AppCompatActivity() {
 
             alarmManager!!.set(AlarmManager.RTC_WAKEUP, pickerTime!!, pIntent)
 
+           // scheduleNotification(getNotification("5 second delay"), calendar.timeInMillis.toInt())
+
+
 
             Toast.makeText(
                 this,
@@ -114,20 +128,22 @@ class Alarm : AppCompatActivity() {
 
         } else {
             //stop ringtone
+            val intent = Intent(this, AlarmHelper::class.java)
+            pIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
             if (Utility.ringtoneHelper != null) {
                 Utility.ringtoneHelper!!.stopRingtone()
             }
 
-            if (pIntent != null) {
+
                 alarmManager!!.cancel(pIntent)
-            }
+
             Toast.makeText(this, "Wecker deaktiviert", Toast.LENGTH_SHORT).show()
 
             val mTextView = findViewById<TextView>(R.id.alarmTimeText)
             var timeText = "Wecker nicht gestellt"
             mTextView.text = timeText
-//shared preferences for toggle save
 
+//shared preferences for toggle save
             val pref = getPreferences(Context.MODE_PRIVATE)
             val editor = pref.edit()
             editor.putBoolean("tgpref", false)
@@ -150,6 +166,9 @@ class Alarm : AppCompatActivity() {
         // value to store
         editor.apply()
     }
+
+
+
 
 
 }

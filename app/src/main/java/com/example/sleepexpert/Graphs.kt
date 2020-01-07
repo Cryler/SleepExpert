@@ -5,11 +5,14 @@ import android.graphics.Color.WHITE
 import android.graphics.Color.rgb
 import android.os.Bundle
 import android.widget.Button
+import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.jjoe64.graphview.DefaultLabelFormatter
 import com.jjoe64.graphview.GraphView
+import com.jjoe64.graphview.Viewport
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 
@@ -19,6 +22,10 @@ class Graphs : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
     private lateinit var user: String
+
+    private lateinit var graph: GraphView
+    private lateinit var viewport: Viewport
+    private lateinit var radioGroup: RadioGroup
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +41,8 @@ class Graphs : AppCompatActivity() {
         }
 
 //        Graph
-        val graph = findViewById<GraphView>(R.id.graph)
-        val viewport = graph.viewport
+        graph = findViewById(R.id.graph)
+        viewport = graph.viewport
         viewport.isScalable = true
         viewport.isScrollable = true
 
@@ -45,28 +52,45 @@ class Graphs : AppCompatActivity() {
         viewport.setMaxX(10.0)
 
 
+        radioGroup = findViewById(R.id.radioGroup)
+        radioGroup.setOnCheckedChangeListener { _, _ ->
+            drawGraph()
+        }
+
+        drawGraph()
+    }
+
+    private fun drawGraph() {
+        val documentKey = when (radioGroup.checkedRadioButtonId) {
+            R.id.radioStunden -> HOWLONGSLEEP_KEY
+            R.id.radioAufgewacht -> WAKEUP_KEY
+            R.id.radioEingeschlafen -> FALLASLEEP_KEY
+            else -> HOWLONGSLEEP_KEY
+        }
+
+        // Graph Y max value
+        viewport.isYAxisBoundsManual = true
+        viewport.setMinY(0.0)
+        viewport.setMaxY(24.0)
+
 //        Graph Y Label formatting
         graph.gridLabelRenderer.labelFormatter = object : DefaultLabelFormatter() {
             override fun formatLabel(value: Double, isValueX: Boolean): String {
-                return if (isValueX) { // show normal x values
-                    super.formatLabel(value, isValueX)
-                } else { // show currency for y values
-                    super.formatLabel(value, isValueX) + " h"
+                if (isValueX) {
+                    return super.formatLabel(value, isValueX)
+                }
+
+                return if (documentKey == HOWLONGSLEEP_KEY) {
+                    "$value h"
+                } else {
+
+                    "${if (value < 10) "0${value.toInt()}" else "${value.toInt()}"}:00"
                 }
             }
         }
 
-//        val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
-//
-//        val documentKey = when (radioGroup.checkedRadioButtonId) {
-//            R.id.radioStunden -> HOWLONGSLEEP_KEY
-//            R.id.radioAufgewacht -> WAKEUP_KEY
-//            R.id.radioEingeschlafen -> FALLASLEEP_KEY
-//            else -> HOWLONGSLEEP_KEY
-//        }
-
         // temporary solution until radiobuttons are fixed
-        val documentKey = HOWLONGSLEEP_KEY
+//        val documentKey = HOWLONGSLEEP_KEY
 
         val collection = db.collection("users/$user/MorningEntries")
         collection.get()
@@ -90,10 +114,11 @@ class Graphs : AppCompatActivity() {
 
                 series.isDrawBackground = true
                 series.thickness = 10
+                graph.removeAllSeries()
                 graph.addSeries(series)
             }
             .addOnFailureListener {
-                // TODO exception handling
+                Toast.makeText(this, "Etwas ist schief gelaufen", Toast.LENGTH_SHORT).show()
             }
 
 

@@ -100,35 +100,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <!--    <RadioGroup-->
-    <!--        android:id="@+id/radioGroup"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:orientation="horizontal"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/divider7"-->
-    <!--        tools:layout_editor_absoluteX="-52dp">-->
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/divider7"
+            tools:layout_editor_absoluteX="-52dp">
 
-    <!--        <RadioButton-->
-    <!--            android:id="@+id/radioStunden"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:onClick="onRadioButtonClicked"-->
-    <!--            android:text="Stunden" />-->
+            <RadioButton
+                android:id="@+id/radioStunden"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Stunden" />
 
-    <!--        <RadioButton-->
-    <!--            android:id="@+id/radioEingeschlafen"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:onClick="onRadioButtonClicked"-->
-    <!--            android:text="Eingeschlafen" />-->
+            <RadioButton
+                android:id="@+id/radioEingeschlafen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Eingeschlafen" />
 
-    <!--        <RadioButton-->
-    <!--            android:id="@+id/radioAufgewacht"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:onClick="onRadioButtonClicked"-->
-    <!--            android:text="Aufgewacht" />-->
+            <RadioButton
+                android:id="@+id/radioAufgewacht"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Aufgewacht" />
 
-    <!--    </RadioGroup>-->
+        </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

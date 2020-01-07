@@ -3,26 +3,17 @@ package com.example.sleepexpert
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.jjoe64.graphview.series.DataPoint
-import kotlinx.android.synthetic.main.activity_entries.*
-import kotlinx.android.synthetic.main.activity_evening_entry.*
 
 class Entries : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
     private lateinit var user: String
-
-    private lateinit var linearLayoutManager: LinearLayoutManager
-//    private lateinit var constraintLayoutManager: LinearLayoutManager
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,39 +30,24 @@ class Entries : AppCompatActivity() {
 
       val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        //LinearView.VERTICAL lmao
 
-        //dummy data
-        val entries = ArrayList<EntriesItems>()
-        val realEntries = ArrayList<EntriesItems>()
-
-        entries.add(EntriesItems("sample Date 1", "sample Hours 1"))
-        entries.add(EntriesItems("sample Date 2", "sample Hours 2"))
-        entries.add(EntriesItems("sample Date 3", "sample Hours 3"))
+        val entries = ArrayList<EntryItem>()
 
         //db query
         val collection = db.collection("users/$user/MorningEntries")
         collection.get()
             .addOnSuccessListener {
-
                 val documents = it.documents
-
-                val descCards = ArrayList<EntriesItems>(documents.size)
                 for (i in 0 until documents.size) {
                     val document = documents[i]
-                    val date = document[DATE_KEY].toString()
-                    val hoursOfSleep = document[HOWLONGSLEEP_KEY].toString()
-                    realEntries.add(EntriesItems(date, hoursOfSleep))
+                    val date = document[DATE_KEY].toString().take(12).trim()
+                    val hoursOfSleep = "${document[HOWLONGSLEEP_KEY].toString()} h geschlafen"
+                    entries.add(EntryItem(i, date, hoursOfSleep))
                 }
 
-        val adapter = EntriesAdapater(entries)
+        val adapter = EntriesAdapter(entries)
 
         recyclerView.adapter = adapter
-
-
-
-
-
     }}
 
     companion object {
