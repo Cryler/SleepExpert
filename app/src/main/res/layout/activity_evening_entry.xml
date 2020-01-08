@@ -499,7 +499,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
-                android:text="Genussmittel wie Kaffee, Tee, Cola, Alkohol (Menge und Uhrzeit angeben"
+                android:text="Genussmittel wie Kaffee, Tee, Cola, Alkohol (Menge und Uhrzeit angeben)"
                 android:textColor="#001622"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
