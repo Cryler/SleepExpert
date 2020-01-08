@@ -164,7 +164,7 @@ class MorningEntry : AppCompatActivity() {
                 cal.set(Calendar.MINUTE, minute)
                 text.setText(SimpleDateFormat("HH:mm").format(cal.time))
             }
-            TimePickerDialog(this, R.style.CustomDatePickerDialog, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
+            TimePickerDialog(this, R.style.CustomDatePickerDialog, timeSetListener, 0, 0, true).show()
 
         }
     }
