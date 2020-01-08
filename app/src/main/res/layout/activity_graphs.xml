@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00E5FF"
+    android:background="#CAE9FF"
     tools:context=".MainActivity">
 
     <Button
@@ -14,7 +14,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
-        android:background="#00B0FF"
+        android:background="#305569"
         android:gravity="center"
         android:text="Zurück"
         android:textColor="#FFFFFF"
@@ -38,7 +38,7 @@
         android:id="@+id/view2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#03C0D6"
+        android:background="#305569"
         app:layout_constraintBottom_toTopOf="@+id/divider2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -65,16 +65,14 @@
         android:id="@+id/view3"
         android:layout_width="match_parent"
         android:layout_height="400dip"
-        android:background="#74EFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/divider7"
         app:layout_constraintTop_toBottomOf="@id/divider2"
-        app:layout_constraintVertical_bias="0.07"
         tools:layout_editor_absoluteX="0dp" />
 
     <com.jjoe64.graphview.GraphView
         android:id="@+id/graph"
         android:layout_width="match_parent"
         android:layout_height="400dip"
+        app:layout_constraintBottom_toTopOf="@+id/buttonBack"
         app:layout_constraintTop_toBottomOf="@+id/divider2"
         tools:layout_editor_absoluteX="16dp" />
 
@@ -89,44 +87,49 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <View
-        android:id="@+id/divider7"
-        android:layout_width="0dp"
-        android:layout_height="8dp"
-        android:layout_marginTop="424dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:checkedButton="@id/radioStunden"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/buttonBack"
+        app:layout_constraintTop_toBottomOf="@+id/graph"
+        tools:layout_editor_absoluteX="-52dp">
 
-        <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_width="match_parent"
+        <RadioButton
+            android:id="@+id/radioStunden"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/divider7"
-            tools:layout_editor_absoluteX="-52dp">
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:buttonTint="#4293C9"
+            android:checked="true"
+            android:text="Stunden"
+            android:textColor="#001622"
+            android:textSize="18sp" />
 
-            <RadioButton
-                android:id="@+id/radioStunden"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="Stunden" />
+        <RadioButton
+            android:id="@+id/radioEingeschlafen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="Eingeschlafen"
+            android:textColor="#001622"
+            android:textSize="18sp" />
 
-            <RadioButton
-                android:id="@+id/radioEingeschlafen"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Eingeschlafen" />
+        <RadioButton
+            android:id="@+id/radioAufgewacht"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="Aufgewacht"
+            android:textColor="#001622"
+            android:textSize="18sp" />
 
-            <RadioButton
-                android:id="@+id/radioAufgewacht"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Aufgewacht" />
-
-        </RadioGroup>
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

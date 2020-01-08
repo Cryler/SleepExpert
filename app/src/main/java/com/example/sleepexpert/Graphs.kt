@@ -1,7 +1,7 @@
 package com.example.sleepexpert
 
 import android.content.Intent
-import android.graphics.Color.WHITE
+import android.graphics.Color.argb
 import android.graphics.Color.rgb
 import android.os.Bundle
 import android.widget.Button
@@ -114,6 +114,8 @@ class Graphs : AppCompatActivity() {
 
                 series.isDrawBackground = true
                 series.thickness = 10
+                series.color = rgb(48,85,105)
+                series.backgroundColor = argb(100, 66,147,201)
                 graph.removeAllSeries()
                 graph.addSeries(series)
             }

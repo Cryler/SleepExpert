@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:android2="..."
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00E5FF"
+    android:background="#CAE9FF"
     tools:context=".MainActivity">
 
     <Button
@@ -16,7 +15,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
-        android:background="#00B0FF"
+        android:background="#4293C9"
         android:drawableTop="@drawable/diagram"
         android:drawablePadding="8dp"
         android:gravity="bottom|center"
@@ -34,7 +33,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:background="#00B0FF"
+        android:background="#305569"
         android:gravity="center"
         android:text="Zurück"
         android:textColor="#FFFFFF"
@@ -51,7 +50,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
-        android:background="#00B0FF"
+        android:background="#4293C9"
         android:drawableTop="@drawable/agendas_white"
         android:drawablePadding="8dp"
         android:gravity="bottom|center"
@@ -79,7 +78,7 @@
         android:id="@+id/view2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#03C0D6"
+        android:background="#305569"
         app:layout_constraintBottom_toTopOf="@+id/divider2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:android2="..."
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00E5FF"
+    android:background="#CAE9FF"
     tools:context=".MainActivity">
 
     <Button
@@ -15,7 +14,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
-        android:background="#00B0FF"
+        android:background="#305569"
         android:gravity="center"
         android:text="Account erstellen"
         android:textColor="#FFFFFF"
@@ -39,7 +38,7 @@
         android:id="@+id/view2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#03C0D6"
+        android:background="#305569"
         app:layout_constraintBottom_toTopOf="@+id/divider2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -84,6 +83,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="332dp"
+        android:layout_height="229dp"
+        android:layout_marginStart="64dp"
+        app:layout_constraintBottom_toBottomOf="@+id/labelPasswordLogin"
+        app:layout_constraintStart_toStartOf="@+id/labelEmailLogin"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/new_surfer_icon_2" />
+
     <EditText
         android:id="@+id/labelEmailLogin"
         android:layout_width="0dp"
@@ -91,12 +101,13 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="150dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="@android:color/background_light"
+        android:backgroundTint="#001622"
         android:ems="10"
         android:hint="E-Mail-Adresse"
         android:inputType="textEmailAddress"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
+        android:textColor="#001622"
+        android:textColorHint="#001622"
+        android:textColorLink="#001622"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider2" />
@@ -108,12 +119,13 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="@android:color/background_light"
+        android:backgroundTint="#001622"
         android:ems="10"
         android:hint="Passwort"
         android:inputType="textPassword"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
+        android:textColor="#001622"
+        android:textColorHint="#001622"
+        android:textColorLink="#001622"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/labelEmailLogin" />
@@ -124,7 +136,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:background="#00B0FF"
+        android:background="#4293C9"
         android:gravity="center"
         android:text="Anmelden"
         android:textColor="#FFFFFF"

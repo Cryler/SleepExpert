@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:layout_margin="8dp"
+    app:cardBackgroundColor="#4293C9">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="sample Date"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FFFFFF" />
 
         <TextView
             android:id="@+id/viewHours"
@@ -23,7 +26,8 @@
             android:layout_height="wrap_content"
             android:text="sample Hours"
             android:textAlignment="textEnd"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
 

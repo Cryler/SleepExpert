@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00E5FF"
+    android:background="#CAE9FF"
     tools:context=".MainActivity">
+
     <ListView
         android:id="@+id/recipe_list_view"
         android:layout_width="0dp"
@@ -14,6 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
     <Button
         android:id="@+id/buttonBackToInfo"
         android:layout_width="0dp"
@@ -21,7 +23,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
-        android:background="#00B0FF"
+        android:background="#305569"
         android:gravity="center"
         android:text="Zurück"
         android:textColor="#FFFFFF"
@@ -45,7 +47,7 @@
         android:id="@+id/view2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#03C0D6"
+        android:background="#305569"
         app:layout_constraintBottom_toTopOf="@+id/divider2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

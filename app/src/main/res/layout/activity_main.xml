@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00E5FF"
+    android:background="#CAE9FF"
     tools:context=".MainActivity">
 
     <Button
@@ -15,7 +15,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="24dp"
-        android:background="#00B0FF"
+        android:background="#4293C9"
         android:drawableTop="@drawable/diagram"
         android:drawablePadding="5dp"
         android:gravity="bottom|center"
@@ -36,7 +36,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-        android:background="#00B0FF"
+        android:background="#4293C9"
         android:drawableTop="@drawable/alarm_clock2"
         android:drawablePadding="5dp"
         android:gravity="bottom|center"
@@ -54,7 +54,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:background="#00B0FF"
+        android:background="#305569"
         android:gravity="center"
         android:text="Ausloggen"
         android:textColor="#FFFFFF"
@@ -72,7 +72,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-        android:background="#00B0FF"
+        android:background="#4293C9"
         android:drawableTop="@drawable/knowledge"
         android:drawablePadding="5dp"
         android:gravity="bottom|center"
@@ -93,7 +93,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="24dp"
-        android:background="#00B0FF"
+        android:background="#4293C9"
         android:drawableTop="@drawable/agendas_white"
         android:drawablePadding="5dp"
         android:gravity="bottom|center"
@@ -133,7 +133,7 @@
         android:id="@+id/view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#02D1E9"
+        android:background="#4293C9"
         app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -143,31 +143,13 @@
         android:id="@+id/view2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#03C0D6"
+        android:background="#305569"
         app:layout_constraintBottom_toTopOf="@+id/divider2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
-
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="251dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/divider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/divider2">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:srcCompat="@drawable/surfer_surfing_in_a_big_water_wave" />
-    </FrameLayout>
 
     <View
         android:id="@+id/divider2"
@@ -193,5 +175,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="232dp"
+        android:layout_height="161dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/new_surfer_icon_2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
