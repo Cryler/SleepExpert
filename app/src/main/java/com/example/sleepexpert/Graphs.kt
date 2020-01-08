@@ -64,7 +64,7 @@ class Graphs : AppCompatActivity() {
         val documentKey = when (radioGroup.checkedRadioButtonId) {
             R.id.radioStunden -> HOWLONGSLEEP_KEY
             R.id.radioAufgewacht -> WAKEUP_KEY
-            R.id.radioEingeschlafen -> FALLASLEEP_KEY
+            R.id.radioBettzeit -> BEDTIME_KEY
             else -> HOWLONGSLEEP_KEY
         }
 
@@ -88,9 +88,6 @@ class Graphs : AppCompatActivity() {
                 }
             }
         }
-
-        // temporary solution until radiobuttons are fixed
-//        val documentKey = HOWLONGSLEEP_KEY
 
         val collection = db.collection("users/$user/MorningEntries")
         collection.get()
