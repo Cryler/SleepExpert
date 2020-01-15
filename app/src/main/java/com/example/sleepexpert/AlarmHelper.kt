@@ -92,7 +92,7 @@ class AlarmHelper : BroadcastReceiver() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             makeNotificationChannel(
                 "CHANNEL_3",
-                "Example channel",
+                "Alarm Notification",
                 NotificationManager.IMPORTANCE_HIGH,
                 context
             )
@@ -145,7 +145,7 @@ class AlarmHelper : BroadcastReceiver() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             makeNotificationChannel2(
                 "CHANNEL_4",
-                "Example channel4",
+                "Reminder Notification",
                 NotificationManager.IMPORTANCE_HIGH,
                 context
             )
